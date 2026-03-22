@@ -27,7 +27,7 @@ class HabitCard extends StatelessWidget {
 
     return Dismissible(
       key: ValueKey(habit.id),
-      direction: DismissDirection.endToStart,
+      direction: DismissDirection.startToEnd,
       confirmDismiss: (_) async {
         final action = await showModalBottomSheet<String>(
           context: context,
