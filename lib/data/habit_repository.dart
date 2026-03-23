@@ -1,9 +1,12 @@
 // Trajuan Smith
 
+// FIX THE STREAK SHIELD
+
 import '../models/habit_log.dart';
 import '../models/habits.dart';
 import 'database_helper.dart';
 
+// This will be the layer in between the UI layer and raw databse
 class HabitRepository {
   final DatabaseHelper _dbHelper = DatabaseHelper.instance;
 
@@ -78,6 +81,7 @@ class HabitRepository {
     return logs.where((log) => log.completed).length;
   }
 
+  // Returns a 7-day list of whether the habit was completed each day
   Future<List<bool>> getLast7DaysCompletion(int habitId) async {
     final logs = await _dbHelper.getLogsForHabit(habitId);
     final today = DateTime.now();
@@ -94,6 +98,8 @@ class HabitRepository {
     return result;
   }
 
+  // Check how many of the last 7 days were completed, then
+  // return it as a fraction out of 7.
   Future<double> getWeeklyCompletionRate(int habitId) async {
     final last7Days = await getLast7DaysCompletion(habitId);
     final completedCount = last7Days.where((day) => day).length;
