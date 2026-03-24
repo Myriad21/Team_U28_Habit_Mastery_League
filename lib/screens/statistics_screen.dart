@@ -65,7 +65,35 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       );
     }
 
-    const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    // Generate dynamic weekday labels for the statistics trend.
+    // This must match the same rolling 7-day range used in
+    // getWeeklyCompletionTrend() from the habit_repository.dart.
+    String _weekdayLabel(int weekday) {
+      switch (weekday) {
+        case DateTime.monday:
+          return 'Mon';
+        case DateTime.tuesday:
+          return 'Tue';
+        case DateTime.wednesday:
+          return 'Wed';
+        case DateTime.thursday:
+          return 'Thu';
+        case DateTime.friday:
+          return 'Fri';
+        case DateTime.saturday:
+          return 'Sat';
+        case DateTime.sunday:
+          return 'Sun';
+        default:
+          return '';
+      }
+    }
+
+    final today = DateTime.now();
+    final labels = List.generate(7, (index) {
+      final date = today.subtract(Duration(days: 6 - index));
+      return _weekdayLabel(date.weekday);
+    });
 
     return Scaffold(
       appBar: AppBar(title: const Text('Statistics')),
