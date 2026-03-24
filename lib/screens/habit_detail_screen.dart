@@ -44,7 +44,35 @@ class _HabitDetailScreenState extends State<HabitDetailScreen> {
     final progress = (_completionCount / widget.habit.milestoneGoal)
         .clamp(0, 1)
         .toDouble();
-    final weekLabels = const ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    
+    // Dynamic weekday labels to match rolling 7-day data.
+    // Fixes bug where heatmap days were shifted due to hardcoded Mon–Sun labels.
+    final today = DateTime.now();
+    String _weekdayLabel(int weekday) {
+      switch (weekday) {
+        case DateTime.sunday:
+          return 'Sun';
+        case DateTime.monday:
+          return 'Mon';
+        case DateTime.tuesday:
+          return 'Tue';
+        case DateTime.wednesday:
+          return 'Wed';
+        case DateTime.thursday:
+          return 'Thu';
+        case DateTime.friday:
+          return 'Fri';
+        case DateTime.saturday:
+          return 'Sat';
+        default:
+          return '';
+      }
+    }
+
+    final weekLabels = List.generate(7, (index) {
+      final date = today.subtract(Duration(days: 6 - index));
+      return _weekdayLabel(date.weekday);
+    });
 
     return Scaffold(
       appBar: AppBar(title: const Text('Habit Details')),
