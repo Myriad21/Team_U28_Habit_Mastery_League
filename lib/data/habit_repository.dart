@@ -1,7 +1,5 @@
 // Trajuan Smith
 
-// FIX THE STREAK SHIELD
-
 import '../models/habit_log.dart';
 import '../models/habits.dart';
 import 'database_helper.dart';
