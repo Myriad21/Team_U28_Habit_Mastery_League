@@ -32,12 +32,33 @@ The app follows a layered architecture to separate concerns and improve maintain
 - **Preferences Layer:** SharedPreferences for storing lightweight user settings
 
 ## How to Run the App
+## Through APK
 1. Locate the provided APK file in the project submission folder
 2. Transfer the APK file to an Android device
 3. Open the APK file on the device
 4. If prompted, enable **Install from Unknown Sources** in device settings
 5. Install the application
 6. Open the app and begin using Habit Mastery League
+
+## Alternative: Run via Emulator
+1. Clone the repository: 
+git clone https://github.com/Myriad21/Team_U28_Habit_Mastery_League
+
+2. Navigate to the project folder: cd habit_mastery_league/lib
+
+
+3. Install dependencies: flutter pub get
+
+
+4. Start an emulator:
+
+Eg. Android Studio
+
+
+5. Run the app: flutter run
+
+
+6. Ensure the emulator is running and selected as the target device.
 
 **Note:** This app is designed for Android devices.
 
