@@ -32,7 +32,7 @@ The app follows a layered architecture to separate concerns and improve maintain
 - **Preferences Layer:** SharedPreferences for storing lightweight user settings
 
 ## How to Run the App
-# Through APK
+## Through APK
 1. Locate the provided APK file in the project submission folder
 2. Transfer the APK file to an Android device
 3. Open the APK file on the device
